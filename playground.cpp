@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 struct bTreeNode
 {
     std::vector<int> keys;
@@ -51,7 +49,27 @@ private:
 
     }
 
-    bTreeNode* searchNode(bTreeNode* node, int key);
+    bTreeNode* searchNode(bTreeNode* node, int key)
+    {
+        if(node == nullptr){
+            return nullptr;
+        }
+        int i = 0;
+        while (i < node->keys.size() && key > node->keys[i])
+        {
+            i++;
+        }
+
+        if(i < node->keys.size() && node->keys[i]== key){
+            return node;
+        }
+        if(node->isLeaf){
+            return nullptr;
+        }else
+            return searchNode(node->children[i], key);
+
+
+    }
 };
 
 void bTree::insert(int key)
@@ -81,11 +99,8 @@ void bTree::traverseNode(bTreeNode* node)
     }
 }
 
-
 int main ()
 {
 
     return 0;
 }
-
-    
