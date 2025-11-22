@@ -23,9 +23,7 @@ class bTree
 {
     bTreeNode* root;
     int t;
-
     void insert(int key);
-    void traverseNode(bTreeNode* node);
     bTreeNode* searchNode(bTreeNode* node, int key);
 
 public:
@@ -35,6 +33,11 @@ public:
         root = new bTreeNode(t, true);
     }
     void traverse();
+private:
+    void traverseNode(bTreeNode* node);
+
+
+    void splitChild(bTreeNode* parent, int index);
 };
 
 // ---------- Implementações ----------
@@ -42,6 +45,29 @@ public:
 void bTree::insert(int key)
 {
     // lógica de inserção futura
+}
+
+void bTree::splitChild(bTreeNode* parent, int index)
+{
+
+    bTreeNode* child = parent->children[index];
+    bTreeNode* newChild = new bTreeNode(t, child->isLeaf);
+
+    int mid = t - 1;
+    int middleKey = child->keys[mid];
+
+    for(int i = mid + 1; i < child->keys.size(); i++)
+    {
+     newChild->keys.push_back(child->keys[i]);
+    }
+
+    if(!child->isLeaf){
+        for(int j = t; j <= child->children.size() -1; j++){
+            newChild->children.push_back(child->children[j]);
+        }
+        newChild->children.resize(t);
+    }
+    child->keys.resize(mid);
 }
 
 void bTree::traverse()
