@@ -10,3 +10,4 @@
 #include <chrono>     // medidas de tempo (benchmark)
 #include <algorithm>  // std::shuffle, etc.
 #include <numeric>    // std::iota
+#include <thread>     // std::this_thread::sleep_for

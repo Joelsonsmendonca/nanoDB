@@ -4,6 +4,7 @@
 
 #pragma once // Garante que o arquivo só seja lido uma vez
 #include "includes.hpp"
+#include "runner.hpp"
 
 // Estrutura do nó da B-Tree
 // Cada nó contém um vetor de chaves inteiras e um vetor de ponteiros para
