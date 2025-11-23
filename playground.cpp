@@ -1,4 +1,5 @@
 #include <iostream>
+#include <print>
 #include <vector>
 
 struct bTreeNode
@@ -35,7 +36,7 @@ public:
     void traverse();
 private:
     void traverseNode(bTreeNode* node);
-
+    void insertNonFull(bTreeNode* node, int key);
 
     void splitChild(bTreeNode* parent, int index);
 };
@@ -44,8 +45,34 @@ private:
 
 void bTree::insert(int key)
 {
-    // lógica de inserção futura
+    
+    
 }
+
+void bTree::insertNonFull(bTreeNode* node, int key)
+{
+    if(node->isLeaf){
+        int i = node->keys.size() -1;
+        while(i >= 0 && key < node->keys[i]){
+            i--;
+        }
+        node->keys.insert(node->keys.begin() + i +1, key);
+    }else{
+        int i = node->keys.size() -1;
+        while(i >=0 && key < node->keys[i]){
+            i--;
+        }
+        i++;
+        if(node->children[i]->keys.size() == 2 * t -1){
+            splitChild(node, i);
+            if(key > node->keys[i]){
+                i++;
+            }
+        }
+        insertNonFull(node->children[i], key);
+    }
+}
+
 
 void bTree::splitChild(bTreeNode* parent, int index)
 {
@@ -67,6 +94,17 @@ void bTree::splitChild(bTreeNode* parent, int index)
         }
         newChild->children.resize(t);
     }
+    parent->keys.push_back(0);
+    int lastIndex = parent->keys.size() -1;
+    for(int i = lastIndex; i > index; i--){
+        parent->keys[i] = parent->keys[i -1];
+    }
+    parent->keys[index] = middleKey;
+    parent->children.push_back(nullptr);
+    for(int i = parent->children.size() -1; i > index +1; i--){
+        parent->children[i] = parent->children[i -1];
+    }
+    parent->children[index +1] = newChild;
     child->keys.resize(mid);
 }
 
@@ -115,18 +153,7 @@ int main ()
 {
     bTree tree(3);  // grau mínimo t = 3
 
-    // pegar o root diretamente
-    bTreeNode* root = new bTreeNode(3, true);
-    
-    // adicionar chaves manualmente
-    root->keys.push_back(10);
-    root->keys.push_back(20);
-    root->keys.push_back(30);
-
-    // atribuir root à árvore
-    tree.traverse(); // para testar a função de travessia
-
-    std::cout << "Traversal of the tree is: " << std::endl;
+    std::println("teste");
     
     return 0;
 }
