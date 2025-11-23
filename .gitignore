@@ -1,3 +1,24 @@
-playground
+# Diretório de build do CMake
+/build/
+
+# Arquivos temporários do editor
+*.swp
+*.swo
+*.DS_Store
+# Arquivos de configuração do IDE
 .vscode/
-test
+.idea/
+
+# Arquivos de compilação específicos
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
