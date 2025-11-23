@@ -206,14 +206,15 @@ int main ()
 {
     bTree tree(3);  // grau mínimo t = 3
 
-    tree.insert(10);
-    tree.insert(20);
-    tree.insert(5);
-    tree.insert(6);
-    tree.insert(12);
-    tree.insert(30);
-    tree.insert(7);
-    tree.insert(17);
+    std::mt19937 rng(std::random_device{}());
+    std::uniform_int_distribution<int> dist(-20, 20);
+
+    for(int i = 0; i < 20; i++){
+        int num = dist(rng);
+        std::cout << "Inserting: " << num << std::endl;
+        tree.insert(num);
+    }
+
     tree.printTree();
     std::cout << "Traversal of the constructed tree is: ";
     tree.traverse();
