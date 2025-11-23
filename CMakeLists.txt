@@ -11,6 +11,7 @@ include_directories(include)
 add_executable(nanoDB
     src/main.cpp
     src/BTree.cpp
+    src/runner.cpp
 )
 
 # Observações:

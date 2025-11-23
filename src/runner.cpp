@@ -44,7 +44,7 @@ void runVisualization(int grauMinimo) {
     std::cout << "Grau Minimo (t): " << grauMinimo << "\n";
 
     // Gerar algumas chaves para visualizar
-    int quantidade = 10; // só algumas chaves para facilitar a visualizacao
+    int quantidade = 15; // só algumas chaves para facilitar a visualizacao
     std::vector<int> chaves(quantidade);
     std::iota(chaves.begin(), chaves.end(), 1);
 
