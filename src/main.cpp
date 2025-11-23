@@ -3,7 +3,7 @@
 // Explicações estão em português: este ficheiro gera chaves, mede tempo de
 // inserção em massa e mede tempo de busca para um valor-alvo.
 
-#include "../include/BTree.hpp"
+#include "includes.hpp"
 
 int main() {
     int escolha;
