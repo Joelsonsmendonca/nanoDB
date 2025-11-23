@@ -1,9 +1,12 @@
+// includes.hpp
+// Reúne includes padrão utilizados em vários arquivos do projeto.
+
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <random>
-#include <iomanip>
-#include <chrono>
-#include <algorithm>
-#include <numeric>
+#include <iostream>   // std::cout, std::endl
+#include <vector>     // std::vector usado para chaves e filhos
+#include <random>     // geradores aleatórios (std::mt19937, std::random_device)
+#include <iomanip>    // formatadores (std::setprecision)
+#include <chrono>     // medidas de tempo (benchmark)
+#include <algorithm>  // std::shuffle, etc.
+#include <numeric>    // std::iota
