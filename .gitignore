@@ -8,6 +8,7 @@
 # Arquivos de configuração do IDE
 .vscode/
 .idea/
+.vs
 
 # Arquivos de compilação específicos
 *.o
