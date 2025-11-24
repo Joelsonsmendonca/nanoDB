@@ -1,5 +1,45 @@
 #include "runner.hpp"
 
+
+void runVectorBenchmark(const std::vector<int>& dados, int alvo) {
+    std::cout << "\n--------------------------------------------------\n";
+    std::cout << "--- BENCHMARK: STD::VECTOR (Lista Simples) ---\n";
+    std::cout << "--------------------------------------------------\n";
+    
+    std::vector<int> vec;
+    vec.reserve(dados.size()); // Dando uma chance justa pro vetor reservando memória
+
+    // 1. Inserção
+    std::cout << "[Vector] Inserindo " << dados.size() << " elementos...\n";
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    for(int x : dados) {
+        vec.push_back(x);
+    }
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    
+    std::cout << ">> Vector Insert: " << std::fixed << std::setprecision(6) 
+              << elapsed.count() << " s. (Geralmente rapido)\n";
+
+    // 2. Busca Linear (Onde o filho chora e a mãe não vê)
+    std::cout << "[Vector] Buscando o valor " << alvo << "...\n";
+    start = std::chrono::high_resolution_clock::now();
+    
+    // std::find faz uma busca linear (O(n)) - percorre um por um
+    auto it = std::find(vec.begin(), vec.end(), alvo); 
+    
+    end = std::chrono::high_resolution_clock::now();
+    
+    auto duration_search = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    
+    if (it != vec.end()) std::cout << ">> Valor ENCONTRADO.\n";
+    else std::cout << ">> Valor NAO encontrado.\n";
+
+    std::cout << ">> Tempo de busca Vector: " << duration_search.count() << " microssegundos.\n";
+}
+
 void runBenchmark(int grauMinimo, int quantidadeDados) {
     bTree tree(grauMinimo);
 
@@ -35,6 +75,8 @@ void runBenchmark(int grauMinimo, int quantidadeDados) {
     else std::cout << ">> Valor " << alvo << " NAO encontrado.\n";
 
     std::cout << ">> Tempo de busca: " << duration_search.count() << " microssegundos.\n";
+
+    runVectorBenchmark(chaves, alvo);
 }
 
 void runVisualization(int grauMinimo) {
