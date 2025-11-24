@@ -12,3 +12,4 @@
 #include <numeric>    // std::iota
 #include <thread>     // std::this_thread::sleep_for
 #include "runner.hpp"  // Inclui runner.hpp para acesso às funções de benchmark e visualização
+#include "BTree.hpp"  // Inclui BTree.hpp para acesso à classe bTree e bTreeNode

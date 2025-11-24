@@ -1,5 +1,5 @@
 #pragma once
-#include "BTree.hpp"
+#include "includes.hpp"
 
 void runBenchmark(int grauMinimo, int quantidadeDados);
 void runVisualization(int grauMinimo);
